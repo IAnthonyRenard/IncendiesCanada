@@ -32,7 +32,7 @@ def main():    #Fonction principale qui contient l'application
         
         #Sous forme de np_array
         #folder_path = "../input/fire_prediction_images_no_yes"
-        folder_path = "fire_prediction_images_no_yes2"
+        folder_path = "/fire_prediction_images_no_yes2"
         no_images = os.listdir(folder_path + '/no/')
         yes_images = os.listdir(folder_path + '/yes/')
         dataset=[]
