@@ -15,7 +15,7 @@ import tensorflow_addons as tfa
 import matplotlib.pyplot as plt
 from random import randint
 import seaborn as sns
-import cv2
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
