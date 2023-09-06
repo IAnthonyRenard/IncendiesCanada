@@ -31,8 +31,8 @@ def main():    #Fonction principale qui contient l'application
     def load_data():
         
         #Sous forme de np_array
-        folder_path = "../input/fire_prediction_images_no_yes" #Dossier input
-        #folder_path = "Streamlit/fire_prediction_images_no_yes2"
+        #folder_path = "../input/fire_prediction_images_no_yes"
+        folder_path = "/Input/fire_prediction_images_no_yes"
         no_images = os.listdir(folder_path + '/no/')
         yes_images = os.listdir(folder_path + '/yes/')
         dataset=[]
