@@ -27,7 +27,7 @@ def main():    #Fonction principale qui contient l'application
     st.subheader("Auteur : Anthony RENARD")
     
     # Fonction d'importation des données
-    @st.cache_data(persist=True)
+    #@st.cache_data(persist=True)
     def load_data():
         
         #Sous forme de np_array
@@ -79,7 +79,7 @@ def main():    #Fonction principale qui contient l'application
     #-------------------------------------------------------------------------------------------------------------------------
     #Split des données
     
-    @st.cache_data(persist=True)
+    #@st.cache_data(persist=True)
     def split(data, dataset, lab) :
             
         #Split des data sous forme de np.array
@@ -131,16 +131,16 @@ def main():    #Fonction principale qui contient l'application
             return encoded
     
  
-        
+     #-------------------------------------------------------------------------------------------------------------------------    
     #Affichage d'un échantillon de photos
     st.subheader("Affichage de quelques photos du dataset")
     fig, axes = plt.subplots(nrows=3, ncols=3, figsize=(15, 15),
                         subplot_kw={'xticks': [], 'yticks': []})
-    for i, ax in enumerate(axes.flat):
+    for i, ax1 in enumerate(axes.flat):
         j=randint(0,len(data)-1)# Création de la variable j pour afficher des photos de manière aléatoire
-        ax.imshow(plt.imread(data.File_Path[j]))
-        ax.set_title(data.Labels[j])
-        ax.title.set_size(25)
+        ax1.imshow(plt.imread(data.File_Path[j]))
+        ax1.set_title(data.Labels[j])
+        ax1.title.set_size(25)
     #plt.tight_layout()
     st.pyplot(fig)
     
@@ -168,7 +168,7 @@ def main():    #Fonction principale qui contient l'application
     fig3, ax3 = plt.subplots()
     counts = data.Labels.value_counts(normalize=True)
     cols = ['#FA3E0C' if (x =="yes") else '#17FA2B' for x in data.Labels]
-    ax2 = sns.barplot(x=counts.index, y=counts, palette=cols)
+    ax3 = sns.barplot(x=counts.index, y=counts, palette=cols)
     plt.xlabel('Labels')
     plt.ylabel('Count')
     plt.xticks(rotation=50);
@@ -290,7 +290,7 @@ def main():    #Fonction principale qui contient l'application
         fct_prediction(x_test, y_test)
     
      #########################################################################################  
-    @st.cache_data(persist=True)
+    #@st.cache_data(persist=True)
     def fct_prediction2(img):
         
         st.markdown("Chargement du modèle ViT = 25s")
@@ -302,8 +302,6 @@ def main():    #Fonction principale qui contient l'application
             st.markdown("Le modèle ViT prédit un risque d'incendie dans cette zone")
         else :
             st.markdown("Le modèle ViT ne prédit pas un risque d'incendie dans cette zone")
-
-
 
 
     st.markdown("Option 2 : lancer la prédiction sur une image choisie")       
