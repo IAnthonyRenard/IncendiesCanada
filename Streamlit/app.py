@@ -76,7 +76,7 @@ def main():    #Fonction principale qui contient l'application
         labels = pd.Series(labels, name='Labels')
         data = pd.concat([file_path, labels], axis=1)
         data = data.sample(frac=1).reset_index(drop=True)
-        
+        print(data.shape)
         
         return data, dataset, lab
     
