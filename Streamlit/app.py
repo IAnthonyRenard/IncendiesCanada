@@ -15,6 +15,8 @@ import tensorflow_addons as tfa
 import matplotlib.pyplot as plt
 from random import randint
 import seaborn as sns
+from skimage import io
+
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -31,33 +33,37 @@ def main():    #Fonction principale qui contient l'application
     def load_data():
         
         #Sous forme de np_array
-        #folder_path = "../input/fire_prediction_images_no_yes"
-        folder_path = "INPUT/fire_prediction_images_no_yes"
-        no_images = os.listdir(folder_path + '/no/')
-        yes_images = os.listdir(folder_path + '/yes/')
+        folder_path1 = "../input/fire_prediction_images_no_yes"
+        #folder_path = "INPUT/fire_prediction_images_no_yes"
+        folder_path2 = "fire_prediction_images_no_yes2"
+        print("Array")
+        no_images = os.listdir(folder_path2 + '/no/')
+        yes_images = os.listdir(folder_path2 + '/yes/')
         dataset=[]
         lab=[]
-
+        
         for image_name in no_images:
-            image=cv2.imread(folder_path + '/no/' + image_name)
+            image=io.imread(folder_path2 + '/no/' + image_name)
             image=Image.fromarray(image,'RGB')
             image=image.resize((120,120))#240,240
             dataset.append(np.array(image))
             lab.append(0)
             
         for image_name in yes_images:
-            image=cv2.imread(folder_path + '/yes/' + image_name)
+            image=io.imread(folder_path2 + '/yes/' + image_name)
             image=Image.fromarray(image,'RGB')
             image=image.resize((120,120))#240,240
+            if image is None:
+                print(image_name)
             dataset.append(np.array(image))
             lab.append(1)
         
         dataset = np.array(dataset)
         lab = np.array(lab)
         
-        
+        print("Dataframe")
         #Sous forme de DataFrame
-        path = '../input/fire_prediction_images_no_yes'
+        path = folder_path1#'../input/fire_prediction_images_no_yes'
         path_imgs = list(glob.glob(path+'/**/*.jpg'))
         labels = list(map(lambda x:os.path.split(os.path.split(x)[0])[1], path_imgs))
         file_path = pd.Series(path_imgs, name='File_Path').astype(str)
@@ -93,8 +99,6 @@ def main():    #Fonction principale qui contient l'application
     
     x_train, x_test, y_train, y_test, train_df, test_df=split(data, dataset, lab)
      #-------------------------------------------------------------------------------------------------------------------------
-    
-   
     
     # ViT
     
