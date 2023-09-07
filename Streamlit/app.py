@@ -259,7 +259,13 @@ def main():    #Fonction principale qui contient l'application
     
     def chargement_model(): 
         #Chargement du modèle ViT
-        bestModel=load_model('../modeles/fire_detection_120_120/ViT_fire_120_120_b300_e200.h5', custom_objects={'Patches': Patches,'PatchEncoder': PatchEncoder})
+        
+        #Lien local
+        #bestModel=load_model('../modeles/fire_detection_120_120/ViT_fire_120_120_b300_e200.h5', custom_objects={'Patches': Patches,'PatchEncoder': PatchEncoder})
+        #Lien Streamlit
+        bestModel=load_model('modeles/fire_detection_120_120/ViT_fire_120_120_b300_e200.h5', custom_objects={'Patches': Patches,'PatchEncoder': PatchEncoder})
+        
+        
         #results = bestModel.evaluate(x_test, y_test)
         st.markdown("Modèle ViT chargé")
         #st.markdown('Le modèle atteint un niveau de "accuracy" de {}%!'.format(round(results[1]*100,2)))
