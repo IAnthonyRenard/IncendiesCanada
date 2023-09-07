@@ -40,7 +40,7 @@ def main():    #Fonction principale qui contient l'application
         
         #Lien pour Streamlit
         folder_path1 = "/input/fire_prediction_images_no_yes"
-        folder_path2 = "/fire_prediction_images_no_yes"
+        folder_path2 = "fire_prediction_images_no_yes"
         
         
         no_images = os.listdir(folder_path2 + '/no/')
