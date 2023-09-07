@@ -35,12 +35,12 @@ def main():    #Fonction principale qui contient l'application
         #Sous forme de np_array
         
         #Lien pour fonctionnement local
-        folder_path1 = "input/fire_prediction_images_no_yes"
-        folder_path2 = "fire_prediction_images_no_yes2"
+        #folder_path1 = "../input/fire_prediction_images_no_yes"
+        #folder_path2 = "fire_prediction_images_no_yes2"
         
         #Lien pour Streamlit
-        #folder_path1 = "../input/fire_prediction_images_no_yes"
-        #folder_path2 = "Streamlit/fire_prediction_images_no_yes"
+        folder_path1 = "input/fire_prediction_images_no_yes"
+        folder_path2 = "Streamlit/fire_prediction_images_no_yes"
         
         
         no_images = os.listdir(folder_path2 + '/no/')
