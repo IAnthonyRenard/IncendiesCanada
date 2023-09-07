@@ -33,9 +33,15 @@ def main():    #Fonction principale qui contient l'application
     def load_data():
         
         #Sous forme de np_array
-        folder_path1 = "../input/fire_prediction_images_no_yes"
-        #folder_path = "INPUT/fire_prediction_images_no_yes"
-        folder_path2 = "Streamlit/fire_prediction_images_no_yes2"
+        
+        #Lien pour fonctionnement local
+        folder_path1 = "input/fire_prediction_images_no_yes"
+        folder_path2 = "fire_prediction_images_no_yes2"
+        
+        #Lien pour Streamlit
+        #folder_path1 = "../input/fire_prediction_images_no_yes"
+        #folder_path2 = "Streamlit/fire_prediction_images_no_yes"
+        
         
         no_images = os.listdir(folder_path2 + '/no/')
         yes_images = os.listdir(folder_path2 + '/yes/')
@@ -97,7 +103,7 @@ def main():    #Fonction principale qui contient l'application
         return x_train, x_test, y_train, y_test, train_df, test_df
     
     
-    x_train, x_test, y_train, y_test, train_df, test_df=split(data, dataset, lab)
+    #x_train, x_test, y_train, y_test, train_df, test_df=split(data, dataset, lab)
      #-------------------------------------------------------------------------------------------------------------------------
     
     # ViT
@@ -251,9 +257,9 @@ def main():    #Fonction principale qui contient l'application
     def chargement_model(): 
         #Chargement du modèle ViT
         bestModel=load_model('../modeles/fire_detection_120_120/ViT_fire_120_120_b300_e200.h5', custom_objects={'Patches': Patches,'PatchEncoder': PatchEncoder})
-        results = bestModel.evaluate(x_test, y_test)
+        #results = bestModel.evaluate(x_test, y_test)
         st.markdown("Modèle ViT chargé")
-        st.markdown('Le modèle atteint un niveau de "accuracy" de {}%!'.format(round(results[1]*100,2)))
+        #st.markdown('Le modèle atteint un niveau de "accuracy" de {}%!'.format(round(results[1]*100,2)))
         return bestModel
 
      
@@ -291,7 +297,9 @@ def main():    #Fonction principale qui contient l'application
             st.markdown("Prédiction NOK")
     
     if st.button("Option 1 : lancer la prédiction sur une image aléatoire"):
-        fct_prediction(x_test, y_test)
+        #fct_prediction(x_test, y_test)
+        fct_prediction(dataset, lab)
+        
     
      #########################################################################################  
     #@st.cache_data(persist=True)
