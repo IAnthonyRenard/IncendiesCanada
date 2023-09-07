@@ -36,21 +36,21 @@ def main():    #Fonction principale qui contient l'application
         folder_path1 = "../input/fire_prediction_images_no_yes"
         #folder_path = "INPUT/fire_prediction_images_no_yes"
         folder_path2 = "fire_prediction_images_no_yes2"
-        print("Array")
+        
         no_images = os.listdir(folder_path2 + '/no/')
         yes_images = os.listdir(folder_path2 + '/yes/')
         dataset=[]
         lab=[]
         
         for image_name in no_images:
-            image=io.imread(folder_path2 + '/no/' + image_name)
+            image=cv2.imread(folder_path2 + '/no/' + image_name)
             image=Image.fromarray(image,'RGB')
             image=image.resize((120,120))#240,240
             dataset.append(np.array(image))
             lab.append(0)
             
         for image_name in yes_images:
-            image=io.imread(folder_path2 + '/yes/' + image_name)
+            image=cv2.imread(folder_path2 + '/yes/' + image_name)
             image=Image.fromarray(image,'RGB')
             image=image.resize((120,120))#240,240
             if image is None:
@@ -61,9 +61,9 @@ def main():    #Fonction principale qui contient l'application
         dataset = np.array(dataset)
         lab = np.array(lab)
         
-        print("Dataframe")
+        
         #Sous forme de DataFrame
-        path = folder_path1#'../input/fire_prediction_images_no_yes'
+        path = folder_path1
         path_imgs = list(glob.glob(path+'/**/*.jpg'))
         labels = list(map(lambda x:os.path.split(os.path.split(x)[0])[1], path_imgs))
         file_path = pd.Series(path_imgs, name='File_Path').astype(str)
