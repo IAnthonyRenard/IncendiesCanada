@@ -157,7 +157,10 @@ def main():    #Fonction principale qui contient l'application
     
     #Affichage de la localisation de chaque photo sur une carte
     st.subheader("Localisation des photos")
-    data_geo=pd.read_csv("df_geo.csv")
+    
+    #data_geo=pd.read_csv("df_geo.csv")#lien local
+    data_geo=pd.read_csv("Streamlit/df_geo.csv")#lien Streamlit
+    
     list_color=data_geo['Labels'].tolist()
     st.map(data_geo,latitude='latitude', longitude='longitude', color='Labels')
     
