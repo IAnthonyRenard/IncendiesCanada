@@ -189,7 +189,7 @@ def main():    #Fonction principale qui contient l'application
     #--------------------------------------------------------------------------------
     #Arrondi des latitudes et longitudes pour regrouper des zones à surveiller
     data_geo2=data_geo.copy()
-    data_geo2=data_geo2.loc[data_geo2["Labels"]=='#FA3E0C']]
+    data_geo2=data_geo2.loc[data_geo2["Labels"]=='#FA3E0C']
     data_geo2['longitude2']=round(data_geo2['longitude'],2)
     data_geo2['latitude2']=round(data_geo2['latitude'],2)
     
