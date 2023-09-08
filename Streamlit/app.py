@@ -195,8 +195,8 @@ def main():    #Fonction principale qui contient l'application
     st.pydeck_chart(pdk.Deck(
         map_style=None,
         initial_view_state=pdk.ViewState(
-            latitude=45.50,
-            longitude=-73.56,
+            latitude=48.46,
+            longitude=-71.26,
             zoom=11,
             pitch=50,
         ),
