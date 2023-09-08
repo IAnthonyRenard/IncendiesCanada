@@ -189,14 +189,14 @@ def main():    #Fonction principale qui contient l'application
     #--------------------------------------------------------------------------------
     #Arrondi des latitudes et longitudes pour regrouper des zones à surveiller
     data_geo2=data_geo.copy()
-    data_geo2['longitude2']=round(data_geo2['longitude'],1)
-    data_geo2['latitude2']=round(data_geo2['latitude'],1)
+    data_geo2['longitude2']=round(data_geo2['longitude'],2)
+    data_geo2['latitude2']=round(data_geo2['latitude'],2)
     
     st.pydeck_chart(pdk.Deck(
         map_style=None,
         initial_view_state=pdk.ViewState(
-            latitude=37.76,
-            longitude=-122.4,
+            latitude=45.50,
+            longitude=-73.56,
             zoom=11,
             pitch=50,
         ),
