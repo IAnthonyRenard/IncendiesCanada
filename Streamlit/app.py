@@ -185,7 +185,35 @@ def main():    #Fonction principale qui contient l'application
     ax3.bar_label(ax3.containers[0], fmt='%.2f')
     st.pyplot(fig3)
     
-    st.bar_chart(data=data, x=counts.index, y=counts,color=['#FA3E0C','#17FA2B'] )
+    #--------------------------------------------------------------------------------
+    st.pydeck_chart(pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+            latitude=37.76,
+            longitude=-122.4,
+            zoom=11,
+            pitch=50,
+        ),
+        layers=[
+            pdk.Layer(
+            'HexagonLayer',
+            data=data_geo,
+            get_position='[longitude, latitude]',
+            radius=200,
+            elevation_scale=4,
+            elevation_range=[0, 1000],
+            pickable=True,
+            extruded=True,
+            ),
+            pdk.Layer(
+                'ScatterplotLayer',
+                data=data_geo,
+                get_position='[longitude, latitude]',
+                get_color='[200, 30, 0, 160]',
+                get_radius=200,
+            ),
+        ],
+    ))
     
     ######################################################################################### 
     st.subheader("Affichage de quelques transformations")
