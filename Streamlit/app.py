@@ -187,6 +187,11 @@ def main():    #Fonction principale qui contient l'application
     st.pyplot(fig3)
     
     #--------------------------------------------------------------------------------
+    #Arrondi des latitudes et longitudes pour regrouper des zones à surveiller
+    data_geo2=data_geo.copy()
+    data_geo2['longitude2']=round(data_geo2['longitude'])
+    data_geo2['latitude2']=round(data_geo2['latitude'])
+    
     st.pydeck_chart(pdk.Deck(
         map_style=None,
         initial_view_state=pdk.ViewState(
@@ -198,8 +203,8 @@ def main():    #Fonction principale qui contient l'application
         layers=[
             pdk.Layer(
             'HexagonLayer',
-            data=data_geo,
-            get_position='[longitude, latitude]',
+            data=data_geo2,
+            get_position='[longitude2, latitude2]',
             radius=200,
             elevation_scale=4,
             elevation_range=[0, 1000],
@@ -208,8 +213,8 @@ def main():    #Fonction principale qui contient l'application
             ),
             pdk.Layer(
                 'ScatterplotLayer',
-                data=data_geo,
-                get_position='[longitude, latitude]',
+                data=data_geo2,
+                get_position='[longitude2, latitude2]',
                 get_color='[200, 30, 0, 160]',
                 get_radius=200,
             ),
