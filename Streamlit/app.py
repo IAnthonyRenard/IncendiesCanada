@@ -166,7 +166,7 @@ def main():    #Fonction principale qui contient l'application
     st.subheader("Distribution des photos (quantité)")
     fig2, ax2 = plt.subplots()
     counts = data.Labels.value_counts(normalize=False)
-    cols = ['#FA3E0C' if (x =="yes") else '#17FA2B' for x in data.Labels]
+    #cols = ['#FA3E0C' if (x =="yes") else '#17FA2B' for x in data.Labels]
     ax2 = sns.barplot(x=counts.index, y=counts, palette=['#FA3E0C','#17FA2B'])#cols)
     plt.xlabel('Labels')
     plt.ylabel('Count')
@@ -179,7 +179,7 @@ def main():    #Fonction principale qui contient l'application
     fig3, ax3 = plt.subplots()
     counts = data.Labels.value_counts(normalize=True)
     cols = ['#FA3E0C' if (x =="yes") else '#17FA2B' for x in data.Labels]
-    ax3 = sns.barplot(x=counts.index, y=counts, palette=cols)
+    ax3 = sns.barplot(x=counts.index, y=counts, palette=['#FA3E0C','#17FA2B'])#cols)
     plt.xlabel('Labels')
     plt.ylabel('Count')
     plt.xticks(rotation=50);
