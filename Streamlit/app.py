@@ -217,7 +217,7 @@ def main():    #Fonction principale qui contient l'application
                 'ScatterplotLayer',
                 data=data_geo2,
                 get_position='[longitude2, latitude2]',
-                #get_color='[200, 30, 0, 160]',
+                get_color='[200, 30, 0, 160]',
                 get_radius=200,
             ),
         ],
