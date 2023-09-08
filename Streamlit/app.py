@@ -189,8 +189,8 @@ def main():    #Fonction principale qui contient l'application
     #--------------------------------------------------------------------------------
     #Arrondi des latitudes et longitudes pour regrouper des zones à surveiller
     data_geo2=data_geo.copy()
-    data_geo2['longitude2']=round(data_geo2['longitude'],2)
-    data_geo2['latitude2']=round(data_geo2['latitude'],2)
+    data_geo2['longitude2']=round(data_geo2['longitude'],3)
+    data_geo2['latitude2']=round(data_geo2['latitude'],3)
     
     st.pydeck_chart(pdk.Deck(
         map_style=None,
@@ -215,7 +215,7 @@ def main():    #Fonction principale qui contient l'application
                 'ScatterplotLayer',
                 data=data_geo2,
                 get_position='[longitude2, latitude2]',
-                get_color='[200, 30, 0, 160]',
+                #get_color='[200, 30, 0, 160]',
                 get_radius=200,
             ),
         ],
