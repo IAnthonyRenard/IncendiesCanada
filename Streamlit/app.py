@@ -59,8 +59,6 @@ def main():    #Fonction principale qui contient l'application
             image=cv2.imread(folder_path2 + '/yes/' + image_name)
             image=Image.fromarray(image,'RGB')
             image=image.resize((120,120))#240,240
-            if image is None:
-                print(image_name)
             dataset.append(np.array(image))
             lab.append(1)
         
@@ -76,7 +74,6 @@ def main():    #Fonction principale qui contient l'application
         labels = pd.Series(labels, name='Labels')
         data = pd.concat([file_path, labels], axis=1)
         data = data.sample(frac=1).reset_index(drop=True)
-        print(data.shape)
         
         return data, dataset, lab
     
