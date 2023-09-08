@@ -277,8 +277,6 @@ def main():    #Fonction principale qui contient l'application
     
     def fct_prediction(x_test, y_test):
         
-        st.markdown("Chargement du modèle ViT = 25s")
-        st.markdown("Prédiction = 1s")
         model=chargement_model()
     
         j=randint(0,len(y_test)-1)
@@ -314,8 +312,6 @@ def main():    #Fonction principale qui contient l'application
     #@st.cache_data(persist=True)
     def fct_prediction2(img):
         
-        st.markdown("Chargement du modèle ViT = 25s")
-        st.markdown("Prédiction = 1s")
         model=chargement_model()
         prediction=model.predict(img)
         pred=np.argmax(prediction)
