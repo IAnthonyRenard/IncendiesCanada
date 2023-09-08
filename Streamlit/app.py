@@ -185,7 +185,7 @@ def main():    #Fonction principale qui contient l'application
     ax3.bar_label(ax3.containers[0], fmt='%.2f')
     st.pyplot(fig3)
     
-    st.bar_chart(data)
+    st.bar_chart(data=data, x=counts.index, y=counts,color=['#FA3E0C','#17FA2B'] )
     
     ######################################################################################### 
     st.subheader("Affichage de quelques transformations")
